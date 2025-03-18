@@ -1,24 +1,11 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
+<!--UTILITZAR EXTENSIÓ DE VSCODE: Live Server , obrirà una finestra http://127.0.0.1:5500/index.html o similar-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comentaris Valids</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" href="comments.css">
 </head>
 <body>
     <h1>Comentaris Valids</h1>
@@ -32,11 +19,12 @@
             </tr>
         </thead>
         <tbody id="comments-body">
-            <!-- Aquí se insertarán los comentarios desde valid_comments.ts -->
+            <!-- espai on es generaran les dades-->
         </tbody>
     </table>
-
-    <script type="module" src="valid_comments.ts"></script> 
+    <p><a href="index.html">Anar a l'altre taula</a></p>
+    <script src="valid_comment.js"></script> 
 </body>
 </html>
+
 

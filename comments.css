@@ -1,0 +1,30 @@
+body{
+    background-color: gainsboro;
+}
+h1{
+    font-size: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 20px;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+th {
+    background-color: rgb(115, 177, 192);
+    font-weight: normal;
+}
+td{
+    font-weight: lighter;
+}
