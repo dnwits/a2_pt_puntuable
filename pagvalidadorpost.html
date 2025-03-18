@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts Vàlids</title>
+    
+    
+</head>
+
+<body>
+    <h1>Posts Vàlids</h1>
+
+    <!-- Barra de cerca per filtrar posts -->
+    <input type="text" id="searchBar" placeholder="Cerca per títol o autor...">
+    <button id="reloadBtn">Recarrega Posts</button>
+    
+    <!-- Contenidor per mostrar els posts -->
+    <div class="post-container" id="post-container"></div>
+
+    <!-- Script amb la lògica de validació i renderització -->
+    <script type="module">
+        import Ajv from 'https://cdn.jsdelivr.net/npm/ajv/dist/ajv.min.js'; // Importa la llibreria Ajv per validar JSON
+
+        // Funció per validar un post amb l'esquema definit
+        function validatePost(post) {
+            const schema = {
+                type: 'object',
+                properties: {
+                    userId: { type: 'number' },
+                    id: { type: 'number' },
+                    title: { type: 'string' },
+                    body: { type: 'string' }
+                },
+                required: ['userId', 'id', 'title', 'body']
+            };
+            const ajv = new Ajv();
+            const validate = ajv.compile(schema);
+            const valid = validate(post);
+            if (!valid) console.error('Errors de validació:', validate.errors);
+            return valid;
+        }
+
+        // Funció addicional: compta les paraules d'un text
+        function countWords(text) {
+            return text.trim().split(/\s+/).length;
+        }
+
+        // Obtenim els posts de l'API
+        async function fetchPosts() {
+            const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+            const posts = await response.json();
+
+            // Filtra només els posts vàlids
+            const validPosts = posts.filter(post => validatePost(post));
+
+            // Transforma els posts vàlids afegint autor i nombre de paraules
+            const transformedPosts = validPosts.map(post => ({
+                title: post.title,
+                author: post.userId,
+                wordCount: countWords(post.body),
+            }));
+
+            renderPosts(transformedPosts);
+
+            // Funció per filtrar els posts segons el text de la barra de cerca
+            document.getElementById('searchBar').addEventListener('input', (e) => {
+                const searchText = e.target.value.toLowerCase();
+                const filteredPosts = transformedPosts.filter(post => 
+                    post.title.toLowerCase().includes(searchText) || 
+                    post.author.toString().includes(searchText)
+                );
+                renderPosts(filteredPosts);
+            });
+
+            // Botó per recarregar els posts
+            document.getElementById('reloadBtn').addEventListener('click', () => fetchPosts());
+        }
+
+        // Funció per mostrar els posts dins del contenidor HTML
+        function renderPosts(posts) {
+            const container = document.getElementById('post-container');
+            container.innerHTML = '';
+            posts.forEach(post => {
+                container.innerHTML += `
+                    <div class="post">
+                        <h2>${post.title}</h2>
+                        <p><strong>Autor:</strong> ${post.author}</p>
+                        <p><strong>Paraules:</strong> ${post.wordCount}</p>
+                    </div>`;
+            });
+        }
+
+        fetchPosts();
+    </script>
+</body>
+</html>
