@@ -17,6 +17,9 @@ function validatePost(post: any): boolean {
 // Funció addicional: compta les paraules d'un text
 function countWords(text: string): number {
   return text.trim().split(/\s+/).length;
+  //trim elimina els espais tant al principi com al final, 
+  // split(/\s+/) Divideix el text en paraules, separant per qualsevol espai (inclosos múltiples espais, tabuladors o salts de línia).
+  //length compta quants elements (paraules) té l'array final
 }
 
 // Obtenim els posts
