@@ -23,7 +23,7 @@ comments.forEach(comment =>{ //ver veure per consola si la validació funciona o
 const comentarisValids = comments.filter(name => validateComment(name))
 
 //slice per guardar a una constant només els 10 primers - SI ES VOL VEURE MÉS REGISTRES A LA TAULA final, MODIFICAR EL 10 (hi han 500 resgistres)
-const primerosDiez = comentarisValids.slice(0, 10)
+const primerosCincCents = comentarisValids.slice(0, 500)
 
 //retallar només els emails abans de @
 const trimEmail = (email: string): string => {
@@ -34,13 +34,13 @@ const trimEmail = (email: string): string => {
 };
 
 // Aplicar la función trimEmail a los primeros 10 comentarios válidos
-primerosDiez.forEach(comment => {
+primerosCincCents.forEach(comment => {
     const trimmedEmail = trimEmail(comment.email);
     console.log(`Email recortado: ${trimmedEmail}`);
 });
 
 //---------------------interacció amb html----------------------------
-const trimmedData = primerosDiez.map(comment => ({ // enllaçar els atributs
+const trimmedData = primerosCincCents.map(comment => ({ // enllaçar els atributs
     id: comment.id,
     name: comment.name,
     email: comment.email.split('@')[0], // Tomamos solo la parte antes de @
