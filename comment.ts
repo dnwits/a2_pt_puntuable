@@ -5,3 +5,4 @@ export type Comment = {
     email: string
     body : string
 }
+// crear la clase Comment con los atributos de la api que utilizaremos
