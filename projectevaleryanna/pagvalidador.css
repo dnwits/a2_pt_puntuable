@@ -1,34 +1,36 @@
 
     body {
-        font-family: 'Arial', sans-serif;
-        background: #f4f4f4;
-        color: #333;
-        padding: 20px;
-        text-align: center;
+        font-family: 'Arial', sans-serif; /* El tipus de lletra del body */
+        background: #f4f4f4; /* El color de fons del body */
+        color: #333; /* El color del body */
+        padding: 20px; /* Se aplica 10px a todos los lados entre l'espai entre el contingut del body i el border.*/
+        text-align: center; /* El text que estigui centrat*/
     }
 
     h1 {
-        color: #4A90E2;
-        margin-bottom: 20px;
+        color: #4A90E2; /* Color del titol */
+        margin-bottom: 20px; /* 20px de marge en la part inferior del titol */
     }
 
     table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 20px;
+        width: 100%; /* La taula ocuparà tot l'espai horitzontal  */
+        border-collapse: collapse; /* Fusiona els límits (bordes) de les cel·les de la taula i es fusionen en un sol borde */
+        font-size: 20px; /* mida de la lletra a 20px */
     }
     table, th, td {
-        border: 1px solid rgb(180, 26, 160);
+        border: 1px solid rgb(180, 26, 160); /* grosor del borde: 1px, solid es que el borde serà continu i després el seu color  */
+
     }
     th, td {
-        padding: 8px;
-        text-align: left;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        padding: 8px; /* Se aplica 8px a todos los lados entre l'espai entre el contingut del body i el border*/
+        text-align: left; /* El text estigui a l'esquerra */
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; /* L'estil de lletra de la taula */
     }
     th {
-        background-color: rgb(216, 213, 40);
-        font-weight: normal;
+        background-color: rgb(216, 213, 40); /* color de fons  */
+        font-weight: normal; /* gruix de la lletra com a normal */
     }
     td{
-        font-weight: lighter;
+        font-weight: lighter; /* Fa la lletra sigui més fina */
+
     }
