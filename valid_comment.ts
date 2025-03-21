@@ -22,7 +22,7 @@ comments.forEach(comment =>{ //ver veure per consola si la validació funciona o
 //filtrar solo los registros validos
 const comentarisValids = comments.filter(name => validateComment(name))
 
-//slice per guardar a una constant només els 10 primers - SI ES VOL VEURE MÉS REGISTRES A LA TAULA final, MODIFICAR EL 10 (hi han 500 resgistres)
+//slice per guardar a una constant les dades validades - SI ES VOL VEURE MENYS REGISTRES A LA TAULA final, MODIFICAR el num (500 per qualsevol altre)
 const primerosCincCents = comentarisValids.slice(0, 500)
 
 //retallar només els emails abans de @
@@ -33,10 +33,10 @@ const trimEmail = (email: string): string => {
     return username.trim();
 };
 
-// Aplicar la función trimEmail a los primeros 10 comentarios válidos
+// Aplicar la función trimEmail a los 500 comentarios válidos
 primerosCincCents.forEach(comment => {
     const trimmedEmail = trimEmail(comment.email);
-    console.log(`Email recortado: ${trimmedEmail}`);
+    console.log(`Email recortado: ${trimmedEmail}`); //test
 });
 
 //---------------------interacció amb html----------------------------
@@ -47,7 +47,7 @@ const trimmedData = primerosCincCents.map(comment => ({ // enllaçar els atribut
     body: comment.body
 }));
 
-// Guardar en un archivo JSON
+// Guardar en un archivo JSON los datos (validados y tratados) que utilizaremos en la tabla
 writeFileSync("comments.json", JSON.stringify(trimmedData, null, 2)); //passar la informació validada i ficar-la a un json per després
 
 console.log("✅ Datos validados guardados en comments.json");
